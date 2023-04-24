@@ -1,56 +1,47 @@
+# Desafio_Programador_Protheus_Unoesc
 
-# Desafio Programador Protheus Unoesc
-Esse é o nosso desafio para a vaga de programador Protheus na [Unoesc](https://www.unoesc.edu.br/). Serão testadas as habilidades e qualidade de código ao transformar requisitos limitados em uma aplicação.
+Esse e o codigo para o desafio da [Unoesc](https://www.unoesc.edu.br/). para a vaga de programador Protheus
 
-- [Desafio Programador Protheus Unoesc](#desafio-programador-protheus-unoesc)
-- [Projeto](#projeto)
-  - [Escopo do Projeto](#escopo-do-projeto)
-    - [Requisitos](#requisitos)
-    - [Atenção!](#atenção)
-  - [Tecnologias a serem utilizadas](#tecnologias-a-serem-utilizadas)
-- [Avaliação](#avaliação)
+Link para repostiorio com os commits [PauloSavaris](https://github.com/paulosavaris/Desafio_Programador_Protheus_Unoesc).
 
-# Projeto
-Você terá que desenvolver uma aplicação responsável por consumir a API [brapi](https://brapi.dev) e persistir os dados de **ações** em um banco de dados relacional.
+Utilizado a IDE Intellij e visual Studio Code
 
-Documentação da API disponível aqui: https://brapi.dev/docs
+# Requisitos
+- JDK 17
+- PostgreSQL 13
+- Maven
 
-**Endpoints que serão utilizados:**
+# Configuracao do Banco de Dados
 
-![EndPoints Desafio Protheus](https://user-images.githubusercontent.com/32557284/225396097-a1d2942d-ced4-4973-b8bf-631b272ff00f.png)
+Antes de executar a aplicação, é necessário configurar o banco de dados. Para isso, execute os seguintes passos:
 
-## Escopo do Projeto
-### Requisitos
-* A aplicação deve persistir em uma tabela do banco de dados todos as ações (***tickers***) disponíveis na API.
-* Neste cadastro de ações (***tickers***) devem conter as informações de símbolo (*symbol*) e nome (*shortname*).
-* A aplicação deve cadastrar em outra tabela no banco de dados as informações de Cotação (*regularMarketPrice*), Valor de Mercado (*marketCap*), Volume de Transações (*regularMarketVolume*), Moeda (*currency*) e Data (*regularMarketTime*) destas ações.
-* A aplicação deve apresentar esses valores ao usuário em formato à escolha do desenvolvedor (terminal, arquivo de texto, csv, pdf, xlsx...) com a seguinte estrutura:
-  * Símbolo;
-  * Nome;
-  * Cotação;
-  * Valor de Mercado;
-  * Volume de Transações;
-  * Moeda;
-  * Data.
-### Atenção!
-* Não há requisitos quanto a escolha da linguagem de programação, framework ou banco de dados a serem utilizados na implementação.
-* Versionar o projeto realizando commits com comentários do que está sendo implementado.
-* Soluções parciais serão aceitas, porém o que for submetido deve estar funcionando.
+- Crie um banco de dados no PostgreSQL. de preferencia com o nome apiunoesc
+  - Configure a conexado do banco no arquivo src\main\java\org\example\Migracao e no arquivo \src\main\java\org\example\postgres\ConexaoFactory
+  - Caso de algum erro com a criacao das tabelas via migration, tem um arquivo unoesAPI.sql com os comandos para criar as tabelas, function e trigger necessarias.
 
-Para auxiliar o entendimento do desafio, elaboramos um diagrama de entidade relacionamento contendo a estrutura do banco de dados:
+# Executando a Aplicação
+Para executar a aplicação, siga os seguintes passos:
 
-![ER Desafio Protheus](https://user-images.githubusercontent.com/32557284/225391963-edf56be7-a835-4bc4-8017-c7dff6f055ec.png)
+- Clone o repositório.
+- Configure o banco de dados de acordo com as instruções acima.
 
-## Tecnologias a serem utilizadas
-* Linguagem de programação à escolha;
-* Banco de Dados relacional à escolha;
-* Git.
-# Avaliação
-**O código será avaliado de acordo com os critérios:**
-* Build e execução da aplicação;
-* Completude das funcionalidades;
-* Qualidade de código (design pattern, manutenibilidade, clareza);
-* Histórico do GIT;
-* Sentido e coerência nas respostas aos questionamentos na entrevista de apresentação do desafio realizada pelo candidato.
+- Se estiver tudo certo so Executar o arquivo main
 
-**Não esqueça de documentar o processo necessário para rodar a aplicação.**
+Em seguida, execute a classe Main para exibir o menu de opções.
+
+Escolha uma das opções do menu digitando o número correspondente e pressionando ENTER. Aqui estão as opções disponíveis:
+
+1 - Consultar dados das acoes, individual ou em grupo. Essa opção permite que você consulte informações sobre uma ou várias ações especificadas.
+
+2 - Consulta todas as acoes (recomendável rodar a cada inicialização do programa, pois baixa todas as informações das acoes no banco). Essa opção permite que você baixe todas as informações disponíveis sobre todas as ações listadas na API e as armazene em um banco de dados.
+
+3 - Consulta grupos de acoes com as mesma letras informadas. Essa opção permite que você consulte informações sobre várias ações cujos símbolos começam com as mesmas letras. Por exemplo, se você digitar "AAPL", a aplicação retornará informações sobre todas as ações que começam com "AAPL", como "AAPL34" e "AAPL3S".
+
+4 - Exportar Arquivo CSV. Essa opção permite que você exporte as informações das ações consultadas para um arquivo CSV.
+
+7 - Sair / finalizar aplicação. Essa opção permite que você saia da aplicação.
+
+Selecione uma opção e siga as instruções apresentadas na tela para prosseguir com a consulta das informações das ações ou a exportação dos dados.
+
+Após concluir a ação desejada, você será redirecionado para o menu principal. Para sair da aplicação, selecione a opção 7.
+
